@@ -41,7 +41,6 @@ class Sorter:
 
 
 # Need to fix sort
-# Коммит
 
 if __name__ == '__main__':
     s = Sorter()
