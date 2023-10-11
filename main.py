@@ -34,9 +34,11 @@ class Sorter:
         file_list = os.listdir(self.directory)
         for item in file_list:
             try:
-                os.rename(f'{self.directory}' + f'/{item}', f'{self.directory}' + f'/{item.split(".")[-1]}' f'/{item}')
+                os.rename(f'{self.get_directory()}' + f'/{item}', f'{self.get_directory()}' + f'/{item.split(".")[-1]}'
+                                                                                              f'/{item}')
             except Exception:
                 pass
+
 
 # Need to fix sort
 # Коммит
