@@ -15,12 +15,10 @@ class Sorter:
         return self.directory
 
     def set_exp_list(self) -> None:
-        file_list = sorted(os.listdir(self.directory),
-                           key=lambda x: os.path.isdir(self.directory + f'/{x}'))
-        # file_list = sorted(os.listdir(self.directory), key=lambda x: os.path.isfile(self.directory + f'/{x}'))
+        file_list = [item for item in os.listdir(self.directory) if os.path.isfile(self.directory + f'/{item}')]
         for item in file_list:
             exp = item.split('.')
-            if exp[-1] not in self.exp_list and len(exp) == 2:
+            if exp[-1] not in self.exp_list:
                 self.exp_list.append(exp[-1])
 
     def create_directory(self):
@@ -34,19 +32,15 @@ class Sorter:
         file_list = os.listdir(self.directory)
         for item in file_list:
             try:
-                os.rename(f'{self.get_directory()}' + f'/{item}', f'{self.directory}' + f'/{item.split(".")[-1]}'
-                                                                                        f'/{item}')
-            except Exception:
-                pass
+                os.rename(f'{self.directory}' + f'/{item}', f'{self.directory}' + f'/{item.split(".")[-1]}'
+                                                                                  f'/{item}')
+            except Exception as Exc:
+                print(Exc)
 
 
-# Need to fix sort
-# Next iteration but
 if __name__ == '__main__':
     s = Sorter()
     s.set_directory()
-    print(s.directory)
     s.set_exp_list()
-    print(s.exp_list)
     s.create_directory()
     s.sorting_files_to_folders()
