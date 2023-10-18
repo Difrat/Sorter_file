@@ -9,7 +9,11 @@ class Sorter:
         self.exp_list = exp_list
 
     def set_directory(self) -> None:
-        self.directory = input('Введите путь к интересующей директории: ')
+        directory = input('Введите путь к интересующей директории: ')
+        if os.path.exists(directory):
+            self.directory = directory
+        else:
+            print(f'Путь не существует или указан неверно.')
 
     def get_directory(self) -> str:
         return self.directory
@@ -41,6 +45,6 @@ class Sorter:
 if __name__ == '__main__':
     s = Sorter()
     s.set_directory()
-    s.set_exp_list()
-    s.create_directory()
-    s.sorting_files_to_folders()
+    # s.set_exp_list()
+    # s.create_directory()
+    # s.sorting_files_to_folders()
