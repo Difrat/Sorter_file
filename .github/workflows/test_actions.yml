@@ -1,0 +1,9 @@
+name: Demo workflow
+on: workflow_dispatch
+jobs:
+  do_something: 
+          runs-on: ubuntu-latest
+          steps:
+          - name: print
+            run: echo Hello GitActions!
+	   
