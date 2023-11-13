@@ -9,7 +9,7 @@ class MainTest(unittest.TestCase):
     def test_Sorter_set_directory(self, mock_input):
         sorter = Sorter()
         sorter.set_directory()
-        self.assertEqual('C:\\Users\\Difrat\\Downloads', sorter.directory)
+        self.assertEqual('/home/runner/work/', sorter.directory)
 
     @patch('builtins.input', return_value='/home/runner/wor')
     def test_exception_Sorter_set_directory(self, mock_input):
