@@ -14,6 +14,5 @@ class MainTest(unittest.TestCase):
     @patch('builtins.input', return_value=r'C:\Users\Difrat\Downl')
     def test_exception_Sorter_set_directory(self, mock_input):
         sorter = Sorter()
-        # sorter.set_directory()
         with self.assertRaises(SystemExit):
             sorter.set_directory()

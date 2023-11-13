@@ -1,8 +1,15 @@
-name: Demo workflow
+name: Autotests
 on: workflow_dispatch
 jobs:
   do_something: 
           runs-on: ubuntu-latest
           steps:
-          - name: print
-            run: echo Hello GitActions!
+            - name: Checkout repository
+              uses: actions/checkout@v3
+            - name: setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.10'
+            - name: Run test
+              run: unittest
+
