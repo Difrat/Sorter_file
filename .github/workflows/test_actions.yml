@@ -11,5 +11,5 @@ jobs:
               with:
                 python-version: '3.10'
             - name: Run test
-              run: python -m unittest discover
+              run: python -m unittest discover .
 
