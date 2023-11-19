@@ -6,19 +6,19 @@ from main import Sorter
 
 class MainTest(unittest.TestCase):
 
-    @patch('builtins.input', return_value=r'C:\Users\Difrat\Downloads')
+    @patch('builtins.input', return_value='/home/runner/work/Sorter_file/Sorter_file/')
     def test_Sorter_set_directory(self, mock_input):
         sorter = Sorter()
         sorter.set_directory()
-        self.assertEqual(r'C:\Users\Difrat\Downloads', sorter.directory)
+        self.assertEqual('/home/runner/work/Sorter_file/Sorter_file/', sorter.directory)
 
-    @patch('builtins.input', return_value=r'C:\Users\Difrat\Download')
+    @patch('builtins.input', return_value='/home/runner/work/Sorter_file/Sorter_fil/')
     def test_exception_Sorter_set_directory(self, mock_input):
         sorter = Sorter()
         with self.assertRaises(SystemExit):
             sorter.set_directory()
 
-    @patch('builtins.input', return_value=r'C:\Users\Difrat\Downloads')
+    @patch('builtins.input', return_value='/home/runner/work/Sorter_file/Sorter_file/')
     def test_set_file_list(self, mock_input):
         sorter = Sorter()
         sorter.set_directory()
