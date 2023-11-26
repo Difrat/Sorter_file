@@ -4,29 +4,38 @@ from unittest.mock import patch
 from main import Sorter
 
 
+@patch('builtins.input', return_value=r'C:\Users\Difrat\Downloads')
+def create_object_Sorter(mock_input):
+    Sorter_object = Sorter()
+    Sorter_object.set_directory()
+    Sorter_object.set_file_list()
+    Sorter_object.set_exp_list()
+    return Sorter_object
+
+
 class MainTest(unittest.TestCase):
 
-    @patch('builtins.input', return_value='/home/runner/work/Sorter_file/Sorter_file/')
-    def test_Sorter_set_directory(self, mock_input):
-        sorter = Sorter()
-        sorter.set_directory()
-        self.assertEqual('/home/runner/work/Sorter_file/Sorter_file/', sorter.directory)
+    def test_Sorter_set_directory(self):
+        s = create_object_Sorter()
+        self.assertEqual(r'C:\Users\Difrat\Downloads', s.directory)
 
-    @patch('builtins.input', return_value='/home/runner/work/Sorter_file/Sorter_fil/')
+    @patch('builtins.input', return_value=r'C:\Users\Difrat\Download')
     def test_exception_Sorter_set_directory(self, mock_input):
-        sorter = Sorter()
+        s = Sorter()
         with self.assertRaises(SystemExit):
-            sorter.set_directory()
+            s.set_directory()
 
-    @patch('builtins.input', return_value='/home/runner/work/Sorter_file/Sorter_file/')
-    def test_set_file_list(self, mock_input):
-        sorter = Sorter()
-        sorter.set_directory()
-        sorter.set_file_list()
-        print(sorter.file_list)
-        print(tuple(os.listdir(sorter.directory)))
-        test_cases = os.listdir(sorter.directory)
+    def test_set_file_list(self):
+        s = create_object_Sorter()
+        test_cases = os.listdir(s.directory)
 
         for file in test_cases:
             with self.subTest(input_string=file):
-                self.assertIn(file, os.listdir(sorter.directory))
+                self.assertIn(file, os.listdir(s.directory))
+
+    def test_set_exp_list(self):
+        s = create_object_Sorter()
+        test_cases = s.exp_list
+        for file in test_cases:
+            with self.subTest(input_string=file):
+                self.assertIn(file, os.listdir(s.directory))

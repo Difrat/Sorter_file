@@ -46,8 +46,6 @@ class Sorter:
                 print(Exc)
 
 
-# test
-
 if __name__ == '__main__':
     s = Sorter()
     s.set_directory()
