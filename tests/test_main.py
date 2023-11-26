@@ -39,3 +39,9 @@ class MainTest(unittest.TestCase):
         for file in test_cases:
             with self.subTest(input_string=file):
                 self.assertIn(file, os.listdir(s.directory))
+
+    def test_exception_set_exp_list(self):
+        s = create_object_Sorter()
+        s.file_list.clear()
+        with self.assertRaises(SystemExit):
+            s.set_exp_list()
