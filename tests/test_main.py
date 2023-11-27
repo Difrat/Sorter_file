@@ -17,7 +17,7 @@ class MainTest(unittest.TestCase):
 
     def test_Sorter_set_directory(self):
         s = create_object_Sorter()
-        self.assertEqual(r'C:\Users\Difrat\Downloads', s.directory)
+        self.assertEqual(r'C:\Users\Difrat\Downloads', s.get_directory())
 
     @patch('builtins.input', return_value=r'C:\Users\Difrat\Download')
     def test_exception_Sorter_set_directory(self, mock_input):
@@ -27,21 +27,21 @@ class MainTest(unittest.TestCase):
 
     def test_set_file_list(self):
         s = create_object_Sorter()
-        test_cases = os.listdir(s.directory)
+        test_cases = os.listdir(s.get_directory())
 
         for file in test_cases:
             with self.subTest(input_string=file):
-                self.assertIn(file, os.listdir(s.directory))
+                self.assertIn(file, os.listdir(s.get_directory()))
 
     def test_set_exp_list(self):
         s = create_object_Sorter()
-        test_cases = s.exp_list
+        test_cases = s.get_exp_list()
         for file in test_cases:
             with self.subTest(input_string=file):
-                self.assertIn(file, os.listdir(s.directory))
+                self.assertIn(file, os.listdir(s.get_directory()))
 
     def test_exception_set_exp_list(self):
         s = create_object_Sorter()
-        s.file_list.clear()
+        s.get_file_list().clear()
         with self.assertRaises(SystemExit):
             s.set_exp_list()
