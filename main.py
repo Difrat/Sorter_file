@@ -1,10 +1,44 @@
 import os
 import sys
-
+from abc import ABC, abstractmethod
 path = r'C:\Users\Difrat\Downloads'
 
 
-class Sorter:
+class Absroot(ABC):
+    @abstractmethod
+    def set_directory(self) -> None:
+        pass
+
+    @abstractmethod
+    def set_file_list(self) -> None:
+        pass
+
+    @abstractmethod
+    def set_exp_list(self) -> None:
+        pass
+
+    @abstractmethod
+    def get_directory(self) -> str:
+        pass
+
+    @abstractmethod
+    def get_exp_list(self) -> list:
+        pass
+
+    @abstractmethod
+    def get_file_list(self) -> list:
+        pass
+
+    @abstractmethod
+    def create_directory(self) -> None:
+        pass
+
+    @abstractmethod
+    def sorting_files_to_folders(self) -> None:
+        pass
+
+
+class Sorter(Absroot):
     def __init__(self, directory: str = None, exp_list: list = [], file_list: list = None):
         self.__directory = directory
         self.__exp_list = exp_list
