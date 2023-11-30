@@ -52,7 +52,8 @@ class Sorter(Absroot):
             sys.exit(f'Attention!!! -> Директория не существует или указана неверно.')
 
     def set_file_list(self) -> None:
-        self.__file_list = [item for item in os.listdir(self.__directory) if os.path.isfile(self.__directory + f'/{item}')]
+        self.__file_list = [item for item in os.listdir(self.__directory) if os.path.isfile(self.__directory +
+                                                                                            f'/{item}')]
 
     def set_exp_list(self) -> None:
         if len(self.__file_list) > 0:
